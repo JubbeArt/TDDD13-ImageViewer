@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.FileChooser?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane 
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="jeswr740.ButtonController"
+	minHeight="300"
+	minWidth="350">
+	<top>		
+		<ToolBar>
+			<Button onAction="#openImage">
+				<graphic>
+					<ImageView><Image url="@new.png"/></ImageView>
+				</graphic>
+			</Button>
+			<Button onAction="#rotateCounterclockwise">
+				<graphic>
+					<ImageView><Image url="@rotate_left.png"/></ImageView>
+				</graphic>
+			</Button>
+			<Button onAction="#rotateClockwise" >
+				<graphic>
+					<ImageView><Image url="@rotate_right.png"/></ImageView>
+				</graphic>
+			</Button>
+			<Button onAction="#increaseSize">
+				<graphic>
+					<ImageView><Image url="@plus.png"/></ImageView>
+				</graphic>
+			</Button>
+			<Button onAction="#decreaseSize">
+				<graphic>
+					<ImageView><Image url="@minus.png"/></ImageView>
+				</graphic>
+			</Button>
+		</ToolBar>
+	</top>
+	<center>
+		<VBox alignment="CENTER" fx:id="container">
+			<ImageView fx:id="image"/>
+		</VBox>
+	</center>
+	<bottom>
+		<Label fx:id="output" text=""/>
+	</bottom>
+</BorderPane>
