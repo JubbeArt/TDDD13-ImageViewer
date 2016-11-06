@@ -10,18 +10,38 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
+/**
+ * Class for handling the input from the buttons in the program. 
+ * 
+ * @author Jesper Wrang (jeswr740) <jeswr740@student.liu.se>
+ */
 public class ButtonController {
 	
+	/**
+	 * UI-objects generated from the main FXML-file
+	 */
 	@FXML VBox container;
 	@FXML ImageView image;
 	@FXML Label output;
 			
+	/**
+	 * The current loaded image.
+	 */
 	private File file;
+	
+	/**
+	 * Changes made to the image.
+	 */
 	private double rotation = 0;
 	private double scale = 1;
-	
 	private double scaleFactor = 0.1;
 	
+    /**
+     * Opens an image and sets its as the current image being viewed.
+     * This also resets the changes made to the image.
+     * 
+     * @param event Not used
+     */
     @FXML protected void openImage(ActionEvent event) {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose an image");
@@ -40,21 +60,42 @@ public class ButtonController {
         redrawWindow();
     }
 
+    /**
+     * Rotates the image 90 degrees clockwise.
+     * 
+     * @param event Not used
+     */
     @FXML protected void rotateClockwise(ActionEvent event) {
     	rotation += 90;
     	redrawWindow();
     }
     
+    /**
+     * Rotates the image 90 degrees counterclockwise
+     * 
+     * @param event Not used
+     */
     @FXML protected void rotateCounterclockwise(ActionEvent event) {
         rotation -= 90;
         redrawWindow();
     }
     
+    /**
+     * Increase the size of the image by the scale factor.
+     * 
+     * @param event Not used
+     */
     @FXML protected void increaseSize(ActionEvent event) {
         scale += scaleFactor;
         redrawWindow();
     }
     
+    /**
+     * Decrease the size of the image by the scale factor.
+     * Will not decrease the size if the current scale is already 0.
+     * 
+     * @param event Not used
+     */
     @FXML protected void decreaseSize(ActionEvent event) {
     	if(scale > scaleFactor) {
     		scale -= scaleFactor;
@@ -62,6 +103,10 @@ public class ButtonController {
     	}
     }
      
+    /**
+     * Redraws the current image by the current rotation and scale.
+     * Also prints the current image size and file size. 
+     */
     private void redrawWindow() {
     	if(image.getImage() == null)
     		return;
